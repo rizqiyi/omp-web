@@ -15,7 +15,7 @@ COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile
 
 COPY . .
-RUN bun run build
+RUN NODE_OPTIONS="--max-old-space-size=4096" bun run build
 
 # ---------------------------------------------------------------------------
 # Runtime: the built app, its dependencies, and the CLI that launches them.
